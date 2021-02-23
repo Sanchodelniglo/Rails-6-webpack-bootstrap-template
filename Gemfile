@@ -23,6 +23,9 @@ gem 'jbuilder', '~> 2.7'
 # HAML
 gem 'haml'
 
+# Devise
+gem 'devise'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
@@ -35,7 +38,7 @@ group :development, :test do
   # Rspec
   gem 'rspec-rails', '~> 4.0.2'
   # ShouldaMatchers
-  gem 'shoulda-matchers'
+  gem 'shoulda-matchers', '~> 4.0'
 end
 
 group :development do
