@@ -11,3 +11,13 @@ import "channels"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+// SCSS
+import 'scss/site.scss'
+
+// JS
+import 'js/site.js'
+
+// Images
+const images = require.context('../images', true)
+const imagePath = (name) => images(name, true)
