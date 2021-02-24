@@ -10,10 +10,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_23_220741) do
+ActiveRecord::Schema.define(version: 2021_02_24_211440) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "answers", force: :cascade do |t|
+    t.string "assertion", null: false
+    t.boolean "correct", default: false, null: false
+    t.bigint "question_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["question_id"], name: "index_answers_on_question_id"
+  end
+
+  create_table "challenge_questions", force: :cascade do |t|
+    t.bigint "challenge_id", null: false
+    t.bigint "question_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["challenge_id"], name: "index_challenge_questions_on_challenge_id"
+    t.index ["question_id"], name: "index_challenge_questions_on_question_id"
+  end
+
+  create_table "challenges", force: :cascade do |t|
+    t.integer "question_number", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.string "prompt", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "user_challenges", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "challenge_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["challenge_id"], name: "index_user_challenges_on_challenge_id"
+    t.index ["user_id"], name: "index_user_challenges_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -30,4 +69,9 @@ ActiveRecord::Schema.define(version: 2021_02_23_220741) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "answers", "questions"
+  add_foreign_key "challenge_questions", "challenges"
+  add_foreign_key "challenge_questions", "questions"
+  add_foreign_key "user_challenges", "challenges"
+  add_foreign_key "user_challenges", "users"
 end

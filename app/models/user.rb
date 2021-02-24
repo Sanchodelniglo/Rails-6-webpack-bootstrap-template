@@ -4,6 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :user_challenges
+  has_many :challenges, through: :user_challenges
+
   validates_presence_of :first_name, :last_name, :pseudo
   validates_uniqueness_of :pseudo
 end

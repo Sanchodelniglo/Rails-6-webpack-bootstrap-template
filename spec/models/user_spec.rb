@@ -8,4 +8,9 @@ RSpec.describe User, type: :model do
     it { should validate_presence_of(:pseudo) }
     it { should validate_uniqueness_of(:pseudo) }
   end
+
+  describe 'associations' do
+    it { should have_many(:user_challenges) }
+    it { should have_many(:challenges) }
+  end
 end
