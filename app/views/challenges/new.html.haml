@@ -1,10 +1,11 @@
 .container
   .text-center
     .row
-      .col-lg-4.offset-lg-4
+      .col-lg-6.offset-lg-3
         = simple_form_for(@challenge) do |f|
           = f.input :question_number, collection: [5, 10, 15], label: false, prompt: 'Nombre de questions'
+          = f.input :address, placeholder: 'Adresse de là où tu te trouves en ce moment même', input_html: { id: 'user_input_autocomplete_address' }
           = f.submit :créer, class: 'btn btn-primary'
 
-%script(src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDANjx3bosEtIyzJaoWs50Wnt6nt_1rmxU " type="text/javascript")
+%script(src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAKVQETXVt0StkwujEpdLezCnZdmPrXULo" type="text/javascript")
 = javascript_pack_tag 'autocomplete'
