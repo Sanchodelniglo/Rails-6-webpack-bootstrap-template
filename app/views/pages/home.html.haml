@@ -1,6 +1,9 @@
 .container.text-center
-  %h1.text-center Marre de pas être d'accord sur où manger entre collègues le midi ?
-  %h2 Jouez le au LUNCHER-QUIZZ
-  = image_pack_tag('WTF.png', class:"img-fluid")
+  %h2.text-center
+    %p="Vous et vos collègues en train de décider"
+    %p=" où vous allez mangé ce midi :"
+  .embed-responsive.embed-responsive-16by9
+    %iframe.embed-responsive-item{:src => "https://giphy.com/embed/4jyU0IuAH6a1q"}
+  %h1 Jouez le au LUNCHER-QUIZZ
   %a.btn.btn-primary.mt-2{:type => "button"} Commencer
 = javascript_pack_tag('button')
