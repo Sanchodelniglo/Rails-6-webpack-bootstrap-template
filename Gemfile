@@ -29,6 +29,9 @@ gem 'devise'
 # Simple form
 gem 'simple_form'
 
+# Geocoder
+gem 'geocoder'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
