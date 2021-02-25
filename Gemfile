@@ -32,6 +32,9 @@ gem 'simple_form'
 # Geocoder
 gem 'geocoder'
 
+# Google places
+gem 'google_places'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

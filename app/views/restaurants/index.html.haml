@@ -1,0 +1,24 @@
+.container
+  .text-center
+    %h1 Mets en jeu le restaurant souhaité
+  .row
+    - @restaurants.each do |restaurant|
+      .col-md-6
+        = link_to '#', class:'card-link' do
+          .restaurant-card
+            - if restaurant.photos.any?
+              .food-icon.mr-2='﫱'
+            .restaurant-card-body
+              %p= restaurant.name.upcase
+              %p= "#{restaurant.street_number} #{restaurant.street}"
+              %p= "#{restaurant.postal_code} #{restaurant.city}"
+              .d-flex.flew-row
+                - if restaurant.opening_hours
+                  %span.mr-2= restaurant.opening_hours['open_now'] ? 'Ouvert' : 'Fermé'
+                - if restaurant.rating
+                  %span{style: 'color: rgb(0, 204, 255);'}
+                    = ' ' * restaurant.rating
+                - if restaurant.price_level
+                  %span.ml-3{style: 'color: rgb(255, 0, 128);'}
+                    = '  ' * restaurant.price_level
+

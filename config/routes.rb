@@ -3,5 +3,7 @@ Rails.application.routes.draw do
 
   root 'pages#home'
 
-  resources :challenges, only: [:new, :create]
+  resources :challenges, only: %i[new create] do
+    resources :restaurants, only: [:index]
+  end
 end

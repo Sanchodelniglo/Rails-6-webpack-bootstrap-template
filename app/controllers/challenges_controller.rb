@@ -7,7 +7,11 @@ class ChallengesController < ApplicationController
 
   def create
     @challenge = Challenge.new(challenge_params)
-    @challenge.save!
+    if @challenge.save!
+      redirect_to challenge_restaurants_path(@challenge)
+    else
+      render :new
+    end
   end
 
   private

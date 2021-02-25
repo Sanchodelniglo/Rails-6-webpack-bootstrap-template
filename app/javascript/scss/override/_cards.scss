@@ -1,0 +1,33 @@
+a.card-link {
+  text-decoration: none;
+  color: $pink;
+
+}
+
+.restaurant-card {
+  padding: 1rem 0;
+  margin: 1rem 0;
+  display: flex;
+  flex-direction: row;
+  background-color: $dark-blue;
+  border: 1px solid $green;
+  flex: 0 auto;
+  transition: all .2s ease-in-out;
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  & .restaurant-card-body {
+    width: 100%;
+  }
+
+  & .food-icon {
+    color: $green;
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: xxx-large;
+  }
+
+}
