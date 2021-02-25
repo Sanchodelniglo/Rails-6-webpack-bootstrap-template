@@ -5,5 +5,6 @@
   .embed-responsive.embed-responsive-16by9
     %iframe.embed-responsive-item{:src => "https://giphy.com/embed/4jyU0IuAH6a1q"}
   %h1 Jouez le au LUNCHER-QUIZZ
-  %a.btn.btn-primary.mt-2{:type => "button"} Commencer
+  - byebug
+  %a.btn.btn-primary.mt-2{type: "button", href: new_challenge_path } Commencer
 = javascript_pack_tag('button')
