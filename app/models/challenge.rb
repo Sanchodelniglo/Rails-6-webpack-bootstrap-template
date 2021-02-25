@@ -4,4 +4,5 @@ class Challenge < ApplicationRecord
 
   validates_presence_of :question_number
   validates_numericality_of :question_number
+  validates_presence_of :address
 end

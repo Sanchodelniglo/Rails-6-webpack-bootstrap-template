@@ -4,6 +4,7 @@ RSpec.describe Challenge, type: :model do
   describe 'validations' do
     it { should validate_presence_of(:question_number) }
     it { should validate_numericality_of(:question_number) }
+    it { should validate_presence_of(:address) }
   end
 
   describe 'associations' do
