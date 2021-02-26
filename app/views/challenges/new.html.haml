@@ -1,13 +1,13 @@
 .container
   .text-center
-    %h1 Création d'un challenge
+    %h1 Nouveau Challenge
     %br
     .row
       .col-lg-6.offset-lg-3
         = simple_form_for(@challenge) do |f|
           = f.input :question_number, collection: [5, 10, 15], label: false, label: 'Nombre de questions'
-          = f.input :address, label: 'Adresse de là où tu te trouves en ce moment même', input_html: { id: 'user_input_autocomplete_address' }
-          = f.submit :créer, class: 'btn btn-primary'
+          = f.input :address, label: 'Adresse de là où tu te trouves en ce moment même, présentement', input_html: { id: 'user_input_autocomplete_address' }
+          = f.submit 'Créer', class: 'btn btn-primary'
 
-%script(src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAKVQETXVt0StkwujEpdLezCnZdmPrXULo" type="text/javascript")
+%script{src: "https://maps.googleapis.com/maps/api/js?libraries=places&key=#{ENV['GOOGLE_PLACES_API_KEY']}", type: "text/javascript"}
 = javascript_pack_tag 'autocomplete'

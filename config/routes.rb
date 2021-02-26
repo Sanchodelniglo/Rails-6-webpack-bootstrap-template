@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   root 'pages#home'
 
   resources :challenges, only: %i[new create] do
-    resources :restaurants, only: [:index]
+    resources :restaurants, only: %i[index create]
   end
 end

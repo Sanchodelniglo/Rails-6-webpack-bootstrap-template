@@ -4,9 +4,9 @@
   .row
     - @restaurants.each do |restaurant|
       .col-md-6
-        = link_to '#', class:'card-link' do
+        = link_to '', class:'card-link' do
           .restaurant-card
-            .food-icon.mr-2='﫱'
+            .food-icon='﫱'
             .restaurant-card-body
               %p= restaurant.name.upcase
               %p= "#{restaurant.street_number} #{restaurant.street}"

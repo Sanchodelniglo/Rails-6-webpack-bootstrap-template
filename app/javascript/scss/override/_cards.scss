@@ -5,29 +5,38 @@ a.card-link {
 }
 
 .restaurant-card {
-  padding: 1rem 0;
+  padding: 1px;
   margin: 1rem 0;
   display: flex;
   flex-direction: row;
   background-color: $dark-blue;
   border: 1px solid $green;
-  flex: 0 auto;
-  transition: all .2s ease-in-out;
+  transition: all .1s ease-in-out;
   &:hover {
     transform: scale(1.05);
+    border-color: $pink;
+
+    .food-icon {
+      background-color: $green;
+      color: $dark-blue;
+    }
+
   }
 
   & .restaurant-card-body {
-    width: 100%;
+    flex-grow: 1;
+    padding-left: 1rem;
   }
 
   & .food-icon {
+    background-color: $dark-blue;
     color: $green;
     width: 30%;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: xxx-large;
+    transition: all .1s ease-in-out;
   }
 
 }

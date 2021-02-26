@@ -9,7 +9,7 @@
     = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    .text-center
-      %p.notice= notice
-      %p.alert= alert
+
+    %p.notice.green-font.text-center.mb-0= notice
+    %p.alert.red-font.text-center.mb-0= alert
     = yield

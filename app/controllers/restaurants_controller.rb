@@ -4,6 +4,13 @@ class RestaurantsController < ApplicationController
   def index
     challenge = Challenge.find(params[:challenge_id])
     retriever = GooglePlacesApi::Retriever.build
-    @restaurants = retriever.get_restaurants_around(challenge.to_coordinates)
+    result = retriever.get_restaurants_around(challenge.to_coordinates)
+
+    if result.nil?
+      flash[:alert] = "Impossible de géolocaliser l'addresse donnée"
+      redirect_to new_challenge_path
+    else
+      @restaurants = result
+    end
   end
 end
