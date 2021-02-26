@@ -48,6 +48,8 @@ group :development, :test do
   gem 'rspec-rails', '~> 4.0.2'
   # ShouldaMatchers
   gem 'shoulda-matchers', '~> 4.0'
+  # Dotenv
+  gem 'dotenv-rails'
 end
 
 group :development do

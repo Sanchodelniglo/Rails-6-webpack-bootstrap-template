@@ -8,7 +8,7 @@ module GooglePlacesApi
       private
 
       def default_key
-        'AIzaSyAKVQETXVt0StkwujEpdLezCnZdmPrXULo'
+        ENV['GOOGLE_PLACES_API_KEY']
       end
     end
 
