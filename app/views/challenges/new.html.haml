@@ -4,10 +4,10 @@
     %br
     .row
       .col-lg-6.offset-lg-3
-        = simple_form_for(@challenge) do |f|
+        = simple_form_for(@challenge, defaults: { required: true }) do |f|
           = f.input :question_number, collection: [5, 10, 15], label: false, label: 'Nombre de questions'
           = f.input :address, label: 'Adresse de là où tu te trouves en ce moment même, présentement', input_html: { id: 'user_input_autocomplete_address' }
-          = f.submit 'Créer', class: 'btn btn-primary'
+          = f.submit 'Créer', class: 'btn btn-primary', data: { disable_with: 'Chargement...' }
 
 %script{src: "https://maps.googleapis.com/maps/api/js?libraries=places&key=#{ENV['GOOGLE_PLACES_API_KEY']}", type: "text/javascript"}
 = javascript_pack_tag 'autocomplete'
