@@ -4,20 +4,16 @@
   .row
     - @restaurants.each do |restaurant|
       .col-md-6
-        = link_to '', class:'card-link' do
+        = link_to challenge_restaurants_path(@challenge.id, restaurant: restaurant.attributes.compact), method: :post, confirm: 'Parier ce restaurant ?', class:'card-link' do
           .restaurant-card
             .food-icon='﫱'
             .restaurant-card-body
               %p= restaurant.name.upcase
-              %p= "#{restaurant.street_number} #{restaurant.street}"
-              %p= "#{restaurant.postal_code} #{restaurant.city}"
+              %p= restaurant.address
               .d-flex.flew-row
-                - if restaurant.opening_hours
-                  %span.mr-5= restaurant.opening_hours['open_now'] ? 'Ouvert' : 'Fermé'
-                - if restaurant.rating
-                  %span{style: 'color: rgb(0, 204, 255);'}
-                    = ' ' * restaurant.rating
-                - if restaurant.price_level
-                  %span.ml-5{style: 'color: rgb(255, 0, 128);'}
-                    = '  ' * restaurant.price_level
+                %span.mr-5= restaurant.opened_now?
+                %span{style: 'color: rgb(0, 204, 255);'}
+                  = ' ' * restaurant.rating
+                %span.ml-5{style: 'color: rgb(255, 0, 128);'}
+                  = '  ' * restaurant.cost
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_25_150958) do
+ActiveRecord::Schema.define(version: 2021_03_01_110714) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,12 +48,25 @@ ActiveRecord::Schema.define(version: 2021_02_25_150958) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "restaurants", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "place_id"
+    t.boolean "open"
+    t.integer "rating"
+    t.integer "cost"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "user_challenges", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "challenge_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "restaurant_id", null: false
     t.index ["challenge_id"], name: "index_user_challenges_on_challenge_id"
+    t.index ["restaurant_id"], name: "index_user_challenges_on_restaurant_id"
     t.index ["user_id"], name: "index_user_challenges_on_user_id"
   end
 
@@ -76,5 +89,6 @@ ActiveRecord::Schema.define(version: 2021_02_25_150958) do
   add_foreign_key "challenge_questions", "challenges"
   add_foreign_key "challenge_questions", "questions"
   add_foreign_key "user_challenges", "challenges"
+  add_foreign_key "user_challenges", "restaurants"
   add_foreign_key "user_challenges", "users"
 end

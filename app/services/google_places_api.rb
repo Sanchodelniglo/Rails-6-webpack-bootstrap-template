@@ -18,6 +18,24 @@ module GooglePlacesApi
       @client = GooglePlaces::Client.new(api_key)
     end
 
+    def build_restaurants(coordinates:, radius:)
+      data = get_restaurants_around(coordinates: coordinates, radius: radius)
+      data.map do |restaurant|
+        next unless params_present?(restaurant)
+
+        Restaurant.new(
+          name: restaurant.name,
+          address: restaurant.formatted_address,
+          place_id: restaurant.place_id,
+          open: restaurant.opening_hours['open_now'],
+          rating: restaurant.rating,
+          cost: restaurant.price_level
+        )
+      end.compact
+    end
+
+    private
+
     def get_restaurants_around(coordinates:, radius:)
       return nil if coordinates.compact.size != 2
 
@@ -30,7 +48,14 @@ module GooglePlacesApi
         radius: radius.to_i
       )
     end
+
+    def params_present?(data)
+      data.name &&
+        data.formatted_address &&
+        data.place_id &&
+        data.opening_hours &&
+        data.rating &&
+        data.price_level
+    end
   end
-
-
 end
