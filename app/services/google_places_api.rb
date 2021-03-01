@@ -18,10 +18,17 @@ module GooglePlacesApi
       @client = GooglePlaces::Client.new(api_key)
     end
 
-    def get_restaurants_around(coordinates)
+    def get_restaurants_around(coordinates:, radius:)
       return nil if coordinates.compact.size != 2
 
-      client.spots(coordinates.first, coordinates.last, types: %w[restaurant food bakery], exclude: %w[cafe], detail: true, radius: 200)
+      client.spots(
+        coordinates.first,
+        coordinates.last,
+        types: %w[restaurant food bakery],
+        exclude: %w[cafe],
+        detail: true,
+        radius: radius.to_i
+      )
     end
   end
 

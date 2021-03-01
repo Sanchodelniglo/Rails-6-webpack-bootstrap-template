@@ -8,4 +8,6 @@ class Challenge < ApplicationRecord
 
   geocoded_by :address
   after_validation :geocode
+
+  attr_accessor :radius_for_restaurants
 end
