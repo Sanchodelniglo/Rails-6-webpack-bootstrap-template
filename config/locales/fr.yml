@@ -1,0 +1,5 @@
+fr:
+  devise:
+    registrations:
+      user:
+        signed_up: "Vous ètes maintenant inscrit !"

@@ -4,7 +4,7 @@
   .row
     - @restaurants.each do |restaurant|
       .col-md-6
-        = link_to challenge_restaurants_path(@challenge.id, restaurant: restaurant.attributes.compact), method: :post, confirm: 'Parier ce restaurant ?', class:'card-link' do
+        = link_to challenge_restaurants_path(@challenge.id, restaurant: restaurant.attributes.compact), data: { method: :post, confirm: 'Parier ce restaurant ?' }, class:'card-link' do
           .restaurant-card
             .food-icon='﫱'
             .restaurant-card-body

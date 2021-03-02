@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_01_110714) do
+ActiveRecord::Schema.define(version: 2021_03_01_135959) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,16 @@ ActiveRecord::Schema.define(version: 2021_03_01_110714) do
     t.string "address", null: false
     t.decimal "latitude", precision: 10, scale: 6
     t.decimal "longitude", precision: 10, scale: 6
+    t.integer "search_radius", default: 100
+  end
+
+  create_table "invitations", force: :cascade do |t|
+    t.string "email", null: false
+    t.boolean "accepted", default: false
+    t.bigint "user_challenge_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_challenge_id"], name: "index_invitations_on_user_challenge_id"
   end
 
   create_table "questions", force: :cascade do |t|
@@ -64,7 +74,7 @@ ActiveRecord::Schema.define(version: 2021_03_01_110714) do
     t.bigint "challenge_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "restaurant_id", null: false
+    t.bigint "restaurant_id"
     t.index ["challenge_id"], name: "index_user_challenges_on_challenge_id"
     t.index ["restaurant_id"], name: "index_user_challenges_on_restaurant_id"
     t.index ["user_id"], name: "index_user_challenges_on_user_id"
@@ -88,6 +98,7 @@ ActiveRecord::Schema.define(version: 2021_03_01_110714) do
   add_foreign_key "answers", "questions"
   add_foreign_key "challenge_questions", "challenges"
   add_foreign_key "challenge_questions", "questions"
+  add_foreign_key "invitations", "user_challenges"
   add_foreign_key "user_challenges", "challenges"
   add_foreign_key "user_challenges", "restaurants"
   add_foreign_key "user_challenges", "users"

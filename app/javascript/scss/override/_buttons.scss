@@ -8,3 +8,28 @@
     border-color: $light-blue;
   }
 }
+
+.btn-success, .btn-success:focus, .btn-success .btn-focus {
+  color: $green;
+  background-color: $dark-blue;
+  border-color: $green;
+  outline: none;
+
+  &:hover {
+    background-color: $green;
+    border-color: $green;
+    color: $medium-blue;
+  }
+}
+
+.btn-danger {
+  color: $red;
+  background-color: $dark-blue;
+  border-color: $red;
+
+  &:hover {
+    color: $pink;
+    background-color: $medium-blue;
+    border-color: $red;
+  }
+}

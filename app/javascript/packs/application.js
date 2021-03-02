@@ -12,6 +12,9 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
+require("jquery")
+require("@nathanvda/cocoon")
+
 // SCSS
 import 'scss/site.scss'
 

@@ -1,0 +1,14 @@
+.container
+  .text-center
+    %h1 Inviter des %joueurs
+    %h3 Parce qu'à plusieurs y a plus de saveurs !
+    %br
+    .row
+      .col-lg-6.offset-lg-3
+        = simple_form_for([@challenge, @user_challenge], defaults: { required: true }) do |f|
+          #invitations
+            = f.simple_fields_for :invitations do |invitation|
+              = render 'invitation_fields', f: invitation
+            .links.text-left
+              = link_to_add_association 'Ajouter un joueur', f, :invitations, class: 'btn btn-success mb-2'
+          = f.submit 'Inviter et passer au quizz', class: 'btn btn-primary', data: { disable_with: 'Chargement...' }

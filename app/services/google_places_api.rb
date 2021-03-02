@@ -12,13 +12,15 @@ module GooglePlacesApi
       end
     end
 
-    attr_reader :client
+    attr_reader :client, :message
 
     def initialize(api_key:)
       @client = GooglePlaces::Client.new(api_key)
     end
 
     def build_restaurants(coordinates:, radius:)
+      return "Impossible de géolocaliser l'addresse donnée" if coordinates.compact.size != 2
+
       data = get_restaurants_around(coordinates: coordinates, radius: radius)
       data.map do |restaurant|
         next unless params_present?(restaurant)

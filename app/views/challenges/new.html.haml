@@ -7,7 +7,7 @@
         = simple_form_for(@challenge, defaults: { required: true }) do |f|
           = f.input :question_number, collection: [5, 10, 15], label: false, label: 'Nombre de questions'
           = f.input :address, label: 'Adresse de là où tu te trouves en ce moment même, présentement', input_html: { id: 'user_input_autocomplete_address' }
-          = f.input :radius_for_restaurants, label: 'Rayon de recherche (mètres)', collection: [200, 300, 500, 1000]
+          = f.input :search_radius, as: :select, label: 'Rayon de recherche (mètres)', collection: [200, 300, 500, 1000]
           = f.submit 'Créer', class: 'btn btn-primary', data: { disable_with: 'Chargement...' }
 
 %script{src: "https://maps.googleapis.com/maps/api/js?libraries=places&key=#{ENV['GOOGLE_PLACES_API_KEY']}", type: "text/javascript"}

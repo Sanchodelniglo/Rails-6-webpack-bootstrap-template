@@ -8,7 +8,7 @@ class ChallengesController < ApplicationController
   def create
     @challenge = Challenge.new(challenge_params)
     if @challenge.save!
-      redirect_to challenge_restaurants_path(@challenge, radius_for_restaurants: radius)
+      redirect_to challenge_restaurants_path(@challenge)
     else
       render :new
     end
@@ -17,10 +17,6 @@ class ChallengesController < ApplicationController
   private
 
   def challenge_params
-    params.require(:challenge).permit(:question_number, :address)
-  end
-
-  def radius
-    params[:challenge][:radius_for_restaurants]
+    params.require(:challenge).permit(:question_number, :address, :search_radius)
   end
 end
