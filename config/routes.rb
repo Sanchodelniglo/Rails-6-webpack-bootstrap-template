@@ -9,4 +9,6 @@ Rails.application.routes.draw do
     resources :restaurants, only: %i[index create]
     resources :questions, only: %i[index]
   end
+
+  resources :answers, only: %i[show]
 end

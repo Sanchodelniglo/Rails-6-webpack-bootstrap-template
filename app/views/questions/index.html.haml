@@ -1,9 +1,12 @@
 .container
   .text-center
     - @questions.each_with_index do |question, index|
-      .question.d-none{data: {index: index}}
+      .questions.d-none{data: {index: index}}
         = question.prompt
         %hr
         - question.answers.each do |answer|
-          = answer.assertion
-          %br
+          .answers{data: {answer_id: answer.id}}
+            = answer.assertion
+            %br
+
+= javascript_pack_tag :game
