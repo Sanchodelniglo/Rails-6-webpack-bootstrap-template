@@ -1,0 +1,9 @@
+.container
+  .text-center
+    - @questions.each_with_index do |question, index|
+      .question.d-none{data: {index: index}}
+        = question.prompt
+        %hr
+        - question.answers.each do |answer|
+          = answer.assertion
+          %br

@@ -7,5 +7,6 @@ Rails.application.routes.draw do
     resources :user_challenges, only: %i[update]
     resources :invitations, only: %i[new]
     resources :restaurants, only: %i[index create]
+    resources :questions, only: %i[index]
   end
 end

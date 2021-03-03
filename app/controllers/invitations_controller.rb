@@ -10,7 +10,7 @@ class InvitationsController < ApplicationController
     user_challenge = UserChallenge.find(params[:id])
     if user_challenge.update!(user_challenge_params)
       create_uc_invitations(user_challenge: user_challenge, invitations_params: invitations_params)
-      destination = challenge_restaurants_path(params[:challenge_id])
+      destination = challenge_questions_path(params[:challenge_id])
     else
       flash[:alert] = "Un problème s'est produit, veuillez réessayer"
       destination = new_challenge_user_challenge_path(params[:challenge_id])
