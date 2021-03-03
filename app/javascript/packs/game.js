@@ -1,4 +1,4 @@
-const questions = document.querySelectorAll('.questions')
+const questions = document.querySelectorAll('.question-card')
 
 
 let displayIndex = 0

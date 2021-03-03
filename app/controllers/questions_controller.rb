@@ -3,6 +3,6 @@ class QuestionsController < ApplicationController
 
   def index
     challenge = Challenge.find(params[:challenge_id])
-    @questions = challenge.question
+    @questions = challenge.questions
   end
 end

@@ -1,0 +1,13 @@
+.question-card {
+  font-size: large;
+
+  & .prompt{
+    border: 1px solid $green;
+    padding: 2rem
+  }
+
+  & .answers {
+    margin-bottom: 1rem;
+    font-size: large;
+  }
+}
