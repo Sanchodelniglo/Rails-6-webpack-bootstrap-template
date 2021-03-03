@@ -12,15 +12,14 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
-require("jquery")
-require("@nathanvda/cocoon")
-
 // SCSS
 import 'scss/site.scss'
 
 // JS
-import 'js/site.js'
+import 'js/libraries.js'
 
 // Images
 const images = require.context('../images', true)
 const imagePath = (name) => images(name, true)
+
+
