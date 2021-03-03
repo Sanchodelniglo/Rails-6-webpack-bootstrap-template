@@ -1,3 +1,5 @@
+// bootstrap
 import 'bootstrap'
-require("jquery")
+
+// cocoon
 require("@nathanvda/cocoon")
