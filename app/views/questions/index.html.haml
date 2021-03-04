@@ -1,13 +1,13 @@
 .container
   - @questions.each_with_index do |question, index|
-    .question-card.d-none{data: {index: index}}
+    .question-card{data: {index: index}}
       .row
         .col-12.prompt
           .text-center= question.prompt
       %hr
       .row.g-2
         - question.answers.each do |answer|
-          .col-md-6.answers.btn.btn-primary{data: {answer_id: answer.id}}
+          .col-md-6.answers.btn.btn-primary{data: {answer_id: answer.id, user_challenge_id: @user_challenge.id, challenge_id: @user_challenge.challenge_id}}
             .white-font
               = answer.assertion
           %br

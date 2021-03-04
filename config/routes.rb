@@ -3,12 +3,12 @@ Rails.application.routes.draw do
 
   root 'pages#home'
 
-  resources :challenges, only: %i[new create] do
+  resources :challenges, only: %i[new create show] do
     resources :user_challenges, only: %i[update]
-    resources :invitations, only: %i[new]
+    resources :invitations, only: %i[new edit]
     resources :restaurants, only: %i[index create]
     resources :questions, only: %i[index]
   end
 
-  resources :answers, only: %i[show]
+  get 'answers/:id/', to: 'answers#compute_score', as: 'compute_score'
 end

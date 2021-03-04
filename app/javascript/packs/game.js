@@ -1,27 +1,34 @@
 const questions = document.querySelectorAll('.question-card')
 
-
-let displayIndex = 0
+displayIndex = 0
 
 questions.forEach((question, index) => {
-  const timer = setTimeout(() => {
-    question.classList.remove('d-none')
-    const answers = question.querySelectorAll('.answers');
 
-    answers.forEach(function(answer) {
-      const id = answer.dataset.answerId;
-      const url = `/answers/${id}`;
-      answer.addEventListener('click', function() {
-        checkAnswer(url);
-        displayIndex += 1
-        question.classList.add('d-none');
-        clearTimeout(timer);
-      });
+
+  question.classList.remove('d-none');
+
+  const answers = question.querySelectorAll('.answers');
+
+  answers.forEach(function(answer) {
+    const answerId = answer.dataset.answerId;
+    const ucId = answer.dataset.userChallengeId
+    const url = `/answers/${answerId}?user_challenge_id=${ucId}`;
+    answer.addEventListener('click', function() {
+      checkAnswer(url);
+      displayIndex += 1
+      question.classList.add('d-none');
+
+      if (displayIndex == questions.length) {
+        const challengeId = answer.dataset.challengeId
+
+        window.location.href = `/challenges/${challengeId}`
+      }
     });
+  });
 
-  }, index * 5000);
 });
 
+console.log(displayIndex)
 
 function checkAnswer(url) {
   fetch(url)

@@ -1,6 +1,12 @@
 class ChallengesController < ApplicationController
   before_action :authenticate_user!
 
+  def show
+    @challenge = Challenge.find(params[:id])
+    @user_challenge = UserChallenge.find_by(user: current_user, challenge: @challenge)
+    @provisionnal_ranking = @challenge.user_challenges.order('score DESC')
+  end
+
   def new
     @challenge = current_user.challenges.build
   end

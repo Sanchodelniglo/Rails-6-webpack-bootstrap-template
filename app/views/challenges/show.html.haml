@@ -1,0 +1,5 @@
+.container
+  - if @challenge.users.size == 1
+    = render partial: 'waiting_for_users', locals: { user_challenge: @user_challenge }
+  - elsif @challenge.users.size < @challenge.invitations.size
+    = render partial: 'pre-results', locals: { user_challenge: @user_challenge }
