@@ -10,7 +10,7 @@ module Sendgrid
     end
 
     def send_invitations
-      invitations = user.invitations
+      invitations = Getters::Invitations.for(user: user, challenge: challenge)
       invitations.each do |invitation|
         send(build_mail(invitation))
       end
@@ -24,7 +24,7 @@ module Sendgrid
     end
 
     def build_mail(invitation)
-      from = Email.new(email: 'invitation@luncher-quizz.com')
+      from = Email.new(email: 'invitation@luncher-quizz.fr')
       to = Email.new(email: invitation.email)
       subject = 'Invitation à jouer au Luncher-Quizz'
       content = Content.new(type: 'text/plain', value: mail_content)
@@ -37,14 +37,10 @@ module Sendgrid
 
     def mail_content
       <<-STRING
-        #{user.full_name} aka #{user.pseudo} te défis au luncher quizz.
-        Si il gagne, vous irez manger #{restaurant_link}.
+        #{user.full_name.capitalize} aka #{user.pseudo.capitalize} te défis au Luncher-Quizz.
+        Si il gagne, vous irez déjeuner dans ce restaurant : #{restaurant.google_url}.
         Si vous acceptez son challenge, todo: add link to app
       STRING
-    end
-
-    def restaurant_link
-      "<a href='#{restaurant.google_url}'>ici</a>".html_safe
     end
   end
 end
