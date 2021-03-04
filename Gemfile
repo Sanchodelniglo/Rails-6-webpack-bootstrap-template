@@ -38,6 +38,9 @@ gem 'google_places'
 # Cocoon
 gem 'cocoon'
 
+# Sendgrid
+gem 'sendgrid-ruby'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
