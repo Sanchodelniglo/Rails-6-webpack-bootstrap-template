@@ -1,8 +1,8 @@
 puts 'Deleting models ...'
 
 Invitation.destroy_all
-UserChallenge.destroy_all
 UserChallengeQuestion.destroy_all
+UserChallenge.destroy_all
 ChallengeQuestion.destroy_all
 Question.destroy_all
 User.destroy_all
