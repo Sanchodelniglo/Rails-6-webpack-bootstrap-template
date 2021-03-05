@@ -1,5 +1,9 @@
 puts 'Deleting models ...'
 
+Invitation.destroy_all
+UserChallenge.destroy_all
+UserChallengeQuestion.destroy_all
+ChallengeQuestion.destroy_all
 Question.destroy_all
 User.destroy_all
 
@@ -54,5 +58,103 @@ question.answers.create!(
     { assertion: 'La Nissan « Gigolo »' },
     { assertion: 'La Mazda « Laputa »', correct: true },
     { assertion: 'La Fiat « 500 l’amour et 200 la p*** »' }
+  ]
+)
+
+question = Question.create!(prompt: 'Qui a inventé la T.N.T ?')
+question.answers.create!(
+  [
+    { assertion: 'Théodore Nathaniel Tarpé' },
+    { assertion: 'Alfred Nobel', correct: true },
+    { assertion: 'Théodore Nobel' },
+    { assertion: 'Obi Wan Kenobi' }
+  ]
+)
+
+question = Question.create!(prompt: 'Quelle est la capitale du Honduras ?')
+question.answers.create!(
+  [
+    { assertion: 'Tegucilgapa' },
+    { assertion: 'Tenochtitlan' },
+    { assertion: 'Teglucidepapa' },
+    { assertion: 'Tegucigalpa', correct: true }
+  ]
+)
+
+question = Question.create!(prompt: "Eugène Poubelle n'a pas inventé la poubelle")
+question.answers.create!(
+  [
+    { assertion: 'Vrai' },
+    { assertion: 'Faux', correct: true }
+  ]
+)
+
+question = Question.create!(prompt: "Qui a dit 'un petit pas pour l'homme, un grand pas pour l'humanité' ?")
+question.answers.create!(
+  [
+    { assertion: 'Neil Armstrong', correct: true },
+    { assertion: 'Lance Armstrong' },
+    { assertion: 'Louis Armstrong' },
+    { assertion: 'Jannie Longo' }
+  ]
+)
+
+question = Question.create!(prompt: "En navigation, que signifie 'prendre un ris' ?")
+question.answers.create!(
+  [
+    { assertion: 'Manger un bon bol de riz' },
+    { assertion: 'Diminuer la taille de la grand voile', correct: true },
+    { assertion: 'Attraper un gros poisson en pêchant à la traîne' },
+    { assertion: 'Raconter un bonne blague' }
+  ]
+)
+
+question = Question.create!(prompt: "Il n'y a pas de petits ...")
+question.answers.create!(
+  [
+    { assertion: 'Profiles' },
+    { assertion: 'Trop petits' },
+    { assertion: 'Profits', correct: true },
+    { assertion: 'Pros Frit' }
+  ]
+)
+
+question = Question.create!(prompt: "L'inventeur du Sandwich est :")
+question.answers.create!(
+  [
+    { assertion: "Johnny Sandwich, deuxième d'une fratrie de trois" },
+    { assertion: "Agatha Sandi Which, Première Dame de l'Inde dans les années 20" },
+    { assertion: 'Un mec qui aimait le pain, le beurre et le jambon' },
+    { assertion: 'John Montagu, quatrième comte de Sandwich', correct: true }
+  ]
+)
+
+question = Question.create!(prompt: "La femelle du lièvre est :")
+question.answers.create!(
+  [
+    { assertion: "La livrette" },
+    { assertion: "La laie" },
+    { assertion: 'La lievremont' },
+    { assertion: 'La Hase', correct: true }
+  ]
+)
+
+question = Question.create!(prompt: "Trouver la bonne réponse :")
+question.answers.create!(
+  [
+    { assertion: "A, la réponse A" },
+    { assertion: "B, la réponse B" },
+    { assertion: "C, la réponse C" },
+    { assertion: 'A, B, C et donc D', correct: true }
+  ]
+)
+
+question = Question.create!(prompt: "Le framework Ruby on Rails a été crée par :")
+question.answers.create!(
+  [
+    { assertion: "DHT" },
+    { assertion: "DDT" },
+    { assertion: "Erreur" },
+    { assertion: 'DHH', correct: true }
   ]
 )

@@ -13,7 +13,11 @@
                 .d-flex.justify-content-center
                   %span.mr-5= restaurant.opened_now?
                   %span{style: 'color: rgb(0, 204, 255);'}
-                    = ' ' * restaurant.rating
+                    -# = ' ' * restaurant.rating
+                    = '*' * restaurant.rating
                   %span.ml-5{style: 'color: rgb(255, 0, 128);'}
-                    = '  ' * restaurant.cost
+                    = '$' * restaurant.cost
+                    -# = '  ' * restaurant.cost
+
+-# = ' ' * restaurant.rating
 
