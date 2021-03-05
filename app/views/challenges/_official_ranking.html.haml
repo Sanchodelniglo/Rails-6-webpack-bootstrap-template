@@ -1,0 +1,31 @@
+.text-center
+  %h1= "Bravo ! #{ranking.winner} c'est gagné !!!"
+  %h2= "Vous irez tous manger ici"
+  %p= "(Si et seulement si les autres joueurs sont fair-play...)"
+  .row
+    .col-md-6.offset-md-3
+      = link_to ranking.winner_restaurant&.google_url, class:'card-link', target:'_blank' do
+        .restaurant-card
+          .food-icon='﫱'
+          .restaurant-card-body
+            %p= @ranking.winner_restaurant&.name&.upcase
+            %p= @ranking.winner_restaurant&.address
+            .d-flex.justify-content-center
+              %span.mr-5= @ranking.winner_restaurant&.opened_now?
+              %span{style: 'color: rgb(0, 204, 255);'}
+                = ' ' * @ranking.winner_restaurant&.rating
+              %span.ml-5{style: 'color: rgb(255, 0, 128);'}
+                = '  ' * @ranking.winner_restaurant&.cost
+  %br
+  %p.light-blue-font= "Si c'est cagné d'un point c'est qu'on a arbitraiment et injustement créer un vainqueur de toute pièce car il y avait une égalité parfaite !"
+  .row
+    .col-6
+      %p NOM
+    .col-6
+      %p POINTS
+    - ranking.official.each_with_index do |user_challenge, index|
+      - font_color = index == 0 ? 'green-font' : 'red-font'
+      .col-6{class: font_color}
+        %p= "#{user_challenge.user.pseudo}"
+      .col-6{class: font_color}
+        %p= "#{user_challenge.score}"

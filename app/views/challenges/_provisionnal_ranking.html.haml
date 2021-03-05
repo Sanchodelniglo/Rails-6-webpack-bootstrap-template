@@ -1,0 +1,14 @@
+.text-center
+  %h1 Bravo ! Vous avez fini le challenge !
+  %h2 Voici le classement provisoire
+
+  .row
+    .col-6
+      %p NOM
+    .col-6
+      %p POINTS
+    - user_challenges.each do |user_challenge|
+      .col-6
+        %p= "#{user_challenge.user.pseudo}"
+      .col-6
+        %p= "#{user_challenge.score}"

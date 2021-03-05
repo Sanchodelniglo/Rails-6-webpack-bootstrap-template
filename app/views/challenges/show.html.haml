@@ -1,0 +1,7 @@
+.container
+  - if @ranking.first_finisher?
+    = render partial: 'first_finisher', locals: { user_challenge: @ranking.user_challenge }
+  - elsif @ranking.waiting_for_others?
+    = render partial: 'provisionnal_ranking', locals: { ranking: @ranking }
+  - else
+    = render partial: 'official_ranking', locals: { ranking: @ranking }
