@@ -1,9 +1,8 @@
 const questions = document.querySelectorAll('.question-card')
 
-displayIndex = 0
+answersCount = 0
 
 questions.forEach((question, index) => {
-
 
   question.classList.remove('d-none');
 
@@ -15,10 +14,10 @@ questions.forEach((question, index) => {
     const url = `/answers/${answerId}?user_challenge_id=${ucId}`;
     answer.addEventListener('click', function() {
       checkAnswer(url);
-      displayIndex += 1
+      answersCount += 1
       question.classList.add('d-none');
 
-      if (displayIndex == questions.length) {
+      if (answersCount == questions.length) {
         const challengeId = answer.dataset.challengeId
 
         window.location.href = `/challenges/${challengeId}`
@@ -28,13 +27,12 @@ questions.forEach((question, index) => {
 
 });
 
-console.log(displayIndex)
-
 function checkAnswer(url) {
   fetch(url)
   .then(response => response.json())
   .then((data) => {
     console.log(data);
+    document.getElementById('score').innerHTML = data.score
   });
 }
 

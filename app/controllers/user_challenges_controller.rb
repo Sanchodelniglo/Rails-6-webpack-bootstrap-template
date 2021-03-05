@@ -7,7 +7,7 @@ class UserChallengesController < ApplicationController
     if user_challenge.save!
       invitation = challenge.invitations.find_by(email: current_user.email)
       invitation.update!(accepted: true)
-      redirect_to challenge_questions_path(challenge.id)
+      redirect_to challenge_restaurants_path(challenge.id)
     end
   end
 

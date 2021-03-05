@@ -1,5 +1,5 @@
 .text-center
-  %h1= "Bravo ! #{ranking.winner.pseudo} c'est gagné !!!"
+  %h1= "Bravo ! #{ranking.winner.pseudo}, c'est gagné !!!"
   %h2= "Vous irez tous manger ici"
   %p= "(Si et seulement si les autres joueurs sont fair-play...)"
   .row
@@ -20,14 +20,17 @@
   %p.light-blue-font= "Si c'est cagné d'un point c'est qu'on a arbitraiment et injustement créer un vainqueur de toute pièce car il y avait une égalité parfaite !"
   %h3.green-font CLASSEMENT
   .row
-    .col-6
-      %p.light-blue-font NOM
-    .col-6
-      %p.light-blue-font POINTS
-    %hr.light-blue-font
+    .col-4.bottom-line
+      %p.my-4.light-blue-font PLACE
+    .col-4.bottom-line
+      %p.my-4.light-blue-font NOM
+    .col-4.bottom-line
+      %p.my-4.light-blue-font POINTS
     - ranking.official.each_with_index do |user_challenge, index|
       - font_color = index == 0 ? 'green-font' : 'red-font'
-      .col-6{class: font_color}
-        %p= "#{user_challenge.user.pseudo}"
-      .col-6{class: font_color}
-        %p= "#{user_challenge.score}"
+      .col-4.bottom-line{class: font_color}
+        %p.my-4= "#{index + 1}"
+      .col-4.bottom-line{class: font_color}
+        %p.my-4= "#{user_challenge.user.pseudo}"
+      .col-4.bottom-line{class: font_color}
+        %p.my-4= "#{user_challenge.score}"

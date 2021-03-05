@@ -1,14 +1,14 @@
 .text-center
   %h1 Bravo ! Vous avez fini le challenge !
-  %h2 Voici le classement provisoire
-
+  %p= "On attend encore #{(ranking.challenge.invitations.size + 1) - ranking.user_challenges.size} joueur"
+  %h2.green-font Voici les points de chacun
   .row
-    .col-6
-      %p NOM
-    .col-6
-      %p POINTS
-    - user_challenges.each do |user_challenge|
-      .col-6
-        %p= "#{user_challenge.user.pseudo}"
-      .col-6
-        %p= "#{user_challenge.score}"
+    .col-6.bottom-line
+      %p.my-4.light-blue-font NOM
+    .col-6.bottom-line
+      %p.my-4.light-blue-font POINTS
+    - ranking.user_challenges.each do |user_challenge|
+      .col-6.bottom-line
+        %p.my-4= "#{user_challenge.user.pseudo}"
+      .col-6.bottom-line
+        %p.my-4= "#{user_challenge.score}"

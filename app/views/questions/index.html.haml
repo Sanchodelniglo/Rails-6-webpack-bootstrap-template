@@ -1,6 +1,11 @@
 .container
+  .text-center
+    .d-flex.justify-content-center.mb-2
+      %h1= "Score : "
+      &nbsp;&nbsp;
+      %h1#score.green-font 0
   - @questions.each_with_index do |question, index|
-    .question-card{data: {index: index}}
+    .question-card.mb-5{data: {index: index}}
       .row
         .col-12.prompt
           .text-center= question.prompt

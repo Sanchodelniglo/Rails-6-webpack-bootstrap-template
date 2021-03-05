@@ -16,10 +16,15 @@ class RestaurantsController < ApplicationController
 
   def create
     challenge_id = params[:challenge_id]
+    user_challenge = UserChallenge
+                     .where(user: current_user, challenge_id: challenge_id)
+                     .first_or_create(user: current_user, challenge_id: challenge_id)
+
     restaurant = Restaurant.new(restaurant_params)
+
     if restaurant.save!
-      user_challenge = UserChallenge.create!(user: current_user, challenge_id: challenge_id, restaurant: restaurant)
-      destination = new_challenge_invitation_path(challenge_id, id: user_challenge)
+      user_challenge.update!(restaurant: restaurant)
+      destination = skip_invitations_path_if_exist(user_challenge: user_challenge)
     else
       flash[:alert] = "Un problème s'est produit, veuillez réessayer !"
       destination = challenge_restaurants_path
@@ -32,5 +37,14 @@ class RestaurantsController < ApplicationController
 
   def restaurant_params
     params.require(:restaurant).permit(:address, :name, :cost, :open, :place_id, :rating)
+  end
+
+  def skip_invitations_path_if_exist(user_challenge:)
+    challenge = user_challenge.challenge
+    if challenge.invitations.any?
+      challenge_questions_path(challenge.id)
+    else
+      new_challenge_invitation_path(challenge.id, id: user_challenge)
+    end
   end
 end
