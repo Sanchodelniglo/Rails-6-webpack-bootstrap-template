@@ -8,7 +8,7 @@ class Ranking
   end
 
   def winner
-    official.first.user.pseudo
+    official.first.user
   end
 
   def winner_restaurant
