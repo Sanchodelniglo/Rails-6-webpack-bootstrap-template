@@ -1,6 +1,6 @@
 .d-flex.flex-column.justify-content-center.align-items-center
   %h2 Se connecter
-
+  = link_to 'user', challenge_user_challenges_path(1), method: :post
   = form_for(resource, as: resource_name, url: session_path(resource_name), defaults: { required: true }) do |f|
     .field
       = f.label :email

@@ -1,6 +1,16 @@
 class UserChallengesController < ApplicationController
   before_action :authenticate_user!
 
+  def create
+    challenge = Challenge.find(params[:challenge_id])
+    user_challenge = UserChallenge.new(user: current_user, challenge: challenge)
+    if user_challenge.save!
+      invitation = challenge.invitations.find_by(email: current_user.email)
+      invitation.update!(accepted: true)
+      redirect_to challenge_questions_path(challenge.id)
+    end
+  end
+
   def update
     user_challenge = UserChallenge.find(params[:id])
     if user_challenge.update!(user_challenge_params)
@@ -30,7 +40,7 @@ class UserChallengesController < ApplicationController
   def create_uc_invitations(user_challenge:, invitations_params:)
     invitations_params.each do |invitation_params|
       invitation_params.delete(:_destroy)
-      user_challenge.invitations.first_or_create!(invitation_params)
+      user_challenge.invitations.create!(invitation_params)
     end
   end
 

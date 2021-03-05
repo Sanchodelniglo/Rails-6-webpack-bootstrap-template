@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :challenges, only: %i[new create show] do
     resources :user_challenges, only: %i[update]
+    get 'user_challenges', to: 'user_challenges#create'
     resources :invitations, only: %i[new edit]
     resources :restaurants, only: %i[index create]
     resources :questions, only: %i[index]

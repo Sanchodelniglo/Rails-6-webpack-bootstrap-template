@@ -4,7 +4,7 @@ class ChallengesController < ApplicationController
   def show
     @challenge = Challenge.find(params[:id])
     @user_challenge = UserChallenge.find_by(user: current_user, challenge: @challenge)
-    @provisionnal_ranking = @challenge.user_challenges.order('score DESC')
+    @ranking = Ranking.new(challenge: @challenge, user: current_user)
   end
 
   def new

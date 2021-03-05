@@ -6,7 +6,6 @@ User.destroy_all
 puts 'Adding models ...'
 
 User.create!(first_name: 'romain', last_name: 'grossard', pseudo: 'sancho', email: 'tamere@gmail.com', password: 'secret')
-User.create!(first_name: 'chuck', last_name: 'Noris', pseudo: 'Mon poing dans ta gueule', email: 'chuck@noris.com', password: 'secret')
 
 question = Question.create!(prompt: 'Que veulent dire les chiffres au fond des verres de cantine ?')
 question.answers.create!(

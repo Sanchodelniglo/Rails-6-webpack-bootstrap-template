@@ -1,6 +1,8 @@
 module Sendgrid
   class InvitationMailer
     include SendGrid
+    include Rails.application.routes.url_helpers
+
     attr_reader :user, :challenge, :restaurant
 
     def initialize(user_challenge:)
@@ -41,8 +43,13 @@ module Sendgrid
       <<-STRING
         #{user.full_name.capitalize} aka #{user.pseudo.capitalize} te défis au Luncher-Quizz.
         Si il gagne, vous irez déjeuner dans ce restaurant : #{restaurant.google_url}.
-        Si vous acceptez son challenge, todo: add link to app
+        Si vous acceptez son challenge, RDV a cette adresse : #{link_to_join_the_party} !
+        Bon chance !
       STRING
+    end
+
+    def link_to_join_the_party
+      challenge_user_challenges_url(challenge.id, Rails.application.routes.default_url_options)
     end
   end
 end

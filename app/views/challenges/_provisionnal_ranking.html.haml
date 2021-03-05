@@ -4,10 +4,10 @@
 
   .row
     .col-6
-      %p Nom
+      %p NOM
     .col-6
-      %p Points
-    - @provisionnal_ranking.each do |user_challenge|
+      %p POINTS
+    - user_challenges.each do |user_challenge|
       .col-6
         %p= "#{user_challenge.user.pseudo}"
       .col-6
