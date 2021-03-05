@@ -14,7 +14,7 @@ class ChallengesController < ApplicationController
   def create
     challenge = Challenge.new(challenge_params)
     if challenge.save!
-      challenge.questions << Question.take(challenge.question_number)
+      challenge.questions << Question.pick_randomly(challenge.question_number)
       redirect_to challenge_restaurants_path(challenge)
     else
       render :new

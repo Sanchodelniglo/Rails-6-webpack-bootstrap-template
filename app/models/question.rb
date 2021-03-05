@@ -5,6 +5,8 @@ class Question < ApplicationRecord
 
   validates_presence_of :prompt
 
+  scope :pick_randomly, ->(number) { order(Arel.sql('RANDOM()')).take(number) }
+
   def score
     answers.size
   end
